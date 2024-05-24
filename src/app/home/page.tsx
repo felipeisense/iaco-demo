@@ -9,12 +9,14 @@ import SideDrawer from '@/components/SideDrawer';
 import { Tab, TabGroup, TabList, TabPanel, TabPanels, Title, Card } from '@tremor/react';
 import Calendar from '@/components/Calendar';
 import ProgressCircleHero from '@/components/ProgressCircle';
-import { BarChart2Hero } from '@/components/BarChart2';
+import { BarChart2Hero } from '@/components/BarChartMaquinarias';
 
 export default function Dashboard() {
 
   const [operariosDate, setOperariosDate] = useState<string[]>([])
   const [machineDate, setMachineDate] = useState<string[]>([])
+  const [segurityDate, setSegurityDate] = useState<string[]>([])
+
   const [chartData, setChartData] = useState<ModifiedOperarioData[]>([]);
   const [chartData2, setChartData2] = useState<CamionOperadorData[]>([]);
   const [chartData3, setChartData3] = useState<CamionOperadorData[]>([]);
@@ -190,6 +192,7 @@ interface CamionOperadorData {
           <TabList>
             <Tab>Operarios</Tab>
             <Tab>Maquinarias</Tab>
+            <Tab>Seguridad</Tab>
           </TabList>
           <TabPanels>
             <TabPanel>
@@ -208,6 +211,7 @@ interface CamionOperadorData {
                 */}
               </Card>
             </TabPanel>
+
             <TabPanel>
               <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3">
                 
@@ -226,6 +230,26 @@ interface CamionOperadorData {
               </Card>
 
             </TabPanel>
+                
+            <TabPanel>
+              <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3">
+                
+              <Calendar setDateRange= {setSegurityDate}></Calendar>
+
+              </div>
+              <Card className="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div>
+                    <BarChart2Hero title="Metros cúbicos cargados diarios"  chartData= {chartData4}/>
+                </div>
+                <div className="flex flex-col space-y-20 mt-6">
+                    <Title className='text-center'>Maquinarias hoy</Title>
+                    <ProgressCircleHero title="Tiempo maquinarias detenidas jornada de hoy" value={40}/>
+                    <ProgressCircleHero  title="Maquinarias fuera de servicio hoy " value={10}/>
+                </div>
+              </Card>
+
+            </TabPanel>
+
           </TabPanels>
         </TabGroup>
       </div>
