@@ -1,0 +1,202 @@
+[
+    {
+        "Fecha": "08:15",
+        "Operador 1": 40.71,
+        "Operador 2": 46.02
+    },
+    {
+        "Fecha": "08:30",
+        "Operador 1": 40.67,
+        "Operador 2": 62.66
+    },
+    {
+        "Fecha": "08:45",
+        "Operador 1": 51.74,
+        "Operador 2": 51.08
+    },
+    {
+        "Fecha": "09:00",
+        "Operador 1": 36.02,
+        "Operador 2": 60.5
+    },
+    {
+        "Fecha": "09:15",
+        "Operador 1": 39.07,
+        "Operador 2": 55.37
+    },
+    {
+        "Fecha": "09:30",
+        "Operador 1": 43.45,
+        "Operador 2": 53.13
+    },
+    {
+        "Fecha": "09:45",
+        "Operador 1": 42.67,
+        "Operador 2": 50.46
+    },
+    {
+        "Fecha": "10:00",
+        "Operador 1": 43.97,
+        "Operador 2": 68.2
+    },
+    {
+        "Fecha": "10:15",
+        "Operador 1": 42.63,
+        "Operador 2": 47.72
+    },
+    {
+        "Fecha": "10:30",
+        "Operador 1": 44.26,
+        "Operador 2": 52.47
+    },
+    {
+        "Fecha": "10:45",
+        "Operador 1": 41.2,
+        "Operador 2": 50.96
+    },
+    {
+        "Fecha": "11:00",
+        "Operador 1": 43.17,
+        "Operador 2": 47.44
+    },
+    {
+        "Fecha": "11:15",
+        "Operador 1": 37.68,
+        "Operador 2": 46.43
+    },
+    {
+        "Fecha": "11:30",
+        "Operador 1": 44.32,
+        "Operador 2": 65.4
+    },
+    {
+        "Fecha": "11:45",
+        "Operador 1": 49.21,
+        "Operador 2": 52.14
+    },
+    {
+        "Fecha": "12:00",
+        "Operador 1": 47.98,
+        "Operador 2": 52.66
+    },
+    {
+        "Fecha": "12:15",
+        "Operador 1": 39.33,
+        "Operador 2": 49.65
+    },
+    {
+        "Fecha": "12:30",
+        "Operador 1": 39.42,
+        "Operador 2": 56.19
+    },
+    {
+        "Fecha": "12:45",
+        "Operador 1": 41.62,
+        "Operador 2": 55.62
+    },
+    {
+        "Fecha": "13:00",
+        "Operador 1": 41.85,
+        "Operador 2": 54.2
+    },
+    {
+        "Fecha": "13:15",
+        "Operador 1": 47.51,
+        "Operador 2": 53.45
+    },
+    {
+        "Fecha": "13:30",
+        "Operador 1": 40.82,
+        "Operador 2": 70.33
+    },
+    {
+        "Fecha": "13:45",
+        "Operador 1": 40.58,
+        "Operador 2": 61.32
+    },
+    {
+        "Fecha": "14:00",
+        "Operador 1": 49.81,
+        "Operador 2": 55.2
+    },
+    {
+        "Fecha": "14:15",
+        "Operador 1": 50.52,
+        "Operador 2": 57.15
+    },
+    {
+        "Fecha": "14:30",
+        "Operador 1": 38.65,
+        "Operador 2": 55.72
+    },
+    {
+        "Fecha": "14:45",
+        "Operador 1": 32.88,
+        "Operador 2": 50.53
+    },
+    {
+        "Fecha": "15:00",
+        "Operador 1": 40.06,
+        "Operador 2": 63.78
+    },
+    {
+        "Fecha": "15:15",
+        "Operador 1": 41.89,
+        "Operador 2": 56.73
+    },
+    {
+        "Fecha": "15:30",
+        "Operador 1": 39.8,
+        "Operador 2": 47.02
+    },
+    {
+        "Fecha": "15:45",
+        "Operador 1": 44.2,
+        "Operador 2": 59.19
+    },
+    {
+        "Fecha": "16:00",
+        "Operador 1": 37.02,
+        "Operador 2": 55.5
+    },
+    {
+        "Fecha": "16:15",
+        "Operador 1": 41.13,
+        "Operador 2": 62.55
+    },
+    {
+        "Fecha": "16:30",
+        "Operador 1": 49.66,
+        "Operador 2": 56.69
+    },
+    {
+        "Fecha": "16:45",
+        "Operador 1": 45.36,
+        "Operador 2": 54.44
+    },
+    {
+        "Fecha": "17:00",
+        "Operador 1": 40.03,
+        "Operador 2": 58.54
+    },
+    {
+        "Fecha": "17:15",
+        "Operador 1": 41.34,
+        "Operador 2": 61.15
+    },
+    {
+        "Fecha": "17:30",
+        "Operador 1": 40.3,
+        "Operador 2": 58.63
+    },
+    {
+        "Fecha": "17:45",
+        "Operador 1": 44.0,
+        "Operador 2": 54.66
+    },
+    {
+        "Fecha": "18:00",
+        "Operador 1": 47.33,
+        "Operador 2": 64.54
+    }
+]
