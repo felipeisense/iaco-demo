@@ -106,7 +106,7 @@ interface CamionOperadorData {
                 const filteredData = jsonData.filter((item: CamionOperadorData) =>
                     operariosDate.includes(item.Fecha)
                 );
-                console.log('Filtered Data2:', filteredData);
+                
                 setChartData2(filteredData);
             }
         } catch (error) {
@@ -159,7 +159,7 @@ interface CamionOperadorData {
     const fetchData = async () => {
       try {
           const response = await fetch(`./ibo/ibo.json`);
-          console.log('response1111', response)
+          
           
 
           if (!response.ok) {
@@ -173,7 +173,7 @@ interface CamionOperadorData {
               const filteredData = jsonData.filter((item: any) =>
                 operariosDate.includes(item.Fecha)
               );
-              console.log('filteredData11', filteredData)
+              
               setChartDataRest(filteredData)
               
           }
@@ -206,7 +206,7 @@ interface CamionOperadorData {
               const filteredData = jsonData.filter((item: CamionOperadorData) =>
                 machineDate.includes(item.Fecha)
               );
-              console.log('filteredData4', filteredData)
+              
               setChartData4(filteredData);
           }
       } catch (error) {
@@ -244,8 +244,7 @@ interface CamionOperadorData {
                       operario1: filteredData[0]['Operario 1'],  // Accede a la propiedad usando corchetes si incluye espacios
                       operario2: filteredData[0]['Operario 2']
                   };
-                  console.log('filtered.operario1', filtered.operario1)
-                  console.log('filtered.operario2', filtered.operario2)
+                  
                   setSecurityUser(filtered.operario1);
                   setSecurityUser2(filtered.operario2);
               }
@@ -267,7 +266,7 @@ interface CamionOperadorData {
     <main className="relative min-h-screen min-w-full bg-blue-100 p-6 sm:p-10">
       <SideDrawer />
       <div className="ml-16">
-        <Title>Iaco-Isense</Title>
+        <Title>DashBoard</Title>
         <TabGroup>
           <TabList>
             <Tab>Operarios</Tab>
