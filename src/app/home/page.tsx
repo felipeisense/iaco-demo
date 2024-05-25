@@ -8,19 +8,24 @@ import { LineChartHero } from '@/components/LineChart';
 import SideDrawer from '@/components/SideDrawer';
 import { Tab, TabGroup, TabList, TabPanel, TabPanels, Title, Card } from '@tremor/react';
 import Calendar from '@/components/Calendar';
-import ProgressCircleHero from '@/components/ProgressCircle';
-import { BarChart2Hero } from '@/components/BarChartMaquinarias';
+import ProgressCircleMdHero from '@/components/ProgressCircleMd';
+import { CalendarDay } from '@/components/CalendarDay';
+import ProgressCircleXdHero from '@/components/ProgressCircleXl';
+
+
+
 
 export default function Dashboard() {
 
   const [operariosDate, setOperariosDate] = useState<string[]>([])
   const [machineDate, setMachineDate] = useState<string[]>([])
-  const [segurityDate, setSegurityDate] = useState<string[]>([])
+  const [securityDate, setSecurityDate] =useState ('')
 
   const [chartData, setChartData] = useState<ModifiedOperarioData[]>([]);
   const [chartData2, setChartData2] = useState<CamionOperadorData[]>([]);
   const [chartData3, setChartData3] = useState<CamionOperadorData[]>([]);
   const [chartData4, setChartData4] = useState<CamionOperadorData[]>([]);
+  const [chartDataRest, setChartDataRest] = useState<any[]>([]);
 
   const router = useRouter();
 
@@ -68,7 +73,7 @@ interface CamionOperadorData {
           console.error('Failed to fetch data:', error);
         }
       }
-      console.log(allData)
+      
       setChartData(allData);
     };
 
@@ -93,8 +98,7 @@ interface CamionOperadorData {
             }
 
             const jsonData: CamionOperadorData[] = await response.json();
-            console.log('JSON Data2:', jsonData);
-            console.log('operariosDate2', operariosDate)
+            
 
             if (operariosDate.length > 0) {
                 const filteredData = jsonData.filter((item: CamionOperadorData) =>
@@ -146,6 +150,41 @@ interface CamionOperadorData {
     }
 }, [operariosDate]);
 
+
+  //idas al baño operador:
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+          const response = await fetch(`./ibo/ibo.json`);
+          console.log('response1111', response)
+          
+
+          if (!response.ok) {
+              throw new Error(`Network response was not ok: ${response.status}`);
+          }
+
+          const jsonData: any = await response.json();
+          
+          
+          if (operariosDate.length > 0) {
+              const filteredData = jsonData.filter((item: any) =>
+                operariosDate.includes(item.Fecha)
+              );
+              console.log('filteredData11', filteredData)
+              setChartDataRest(filteredData)
+              
+          }
+      } catch (error) {
+          console.error('Failed to fetch data:', error);
+      }
+  };
+
+  if (operariosDate.length > 0) {
+      fetchData();
+  }
+}, [operariosDate]);
+
   //metros cubicos cargados diarios
 
   useEffect(() => {
@@ -160,8 +199,7 @@ interface CamionOperadorData {
 
           const jsonData: CamionOperadorData[] = await response.json();
           
-          console.log('jsonData4', jsonData)
-          console.log('machineData4', machineDate)
+          
           if (machineDate.length > 0) {
               const filteredData = jsonData.filter((item: CamionOperadorData) =>
                 machineDate.includes(item.Fecha)
@@ -205,13 +243,13 @@ interface CamionOperadorData {
                 <LineChartHero title={'Tiempo de carga promedio por hora'} chartData = {chartData}/>
                 <LineChartHero title={'Tiempo de carga promedio por dia'} chartData = {chartData2}/>
                 <BarChartHero title={'Cantidad de camiones cargados por operador' } chartData={chartData3}></BarChartHero>
+                <BarChartHero title={'Tiempo en baño operadores'} chartData={chartDataRest}></BarChartHero>
                 {/* 
                     Aqui va grafico
                     Puedes usarlo para comentar varias líneas de código.
                 */}
               </Card>
             </TabPanel>
-
             <TabPanel>
               <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3">
                 
@@ -220,32 +258,30 @@ interface CamionOperadorData {
               </div>
               <Card className="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div>
-                    <BarChart2Hero title="Metros cúbicos cargados diarios"  chartData= {chartData4}/>
+                    <BarChartHero title="Metros cúbicos cargados diarios"  chartData= {chartData4}/>
                 </div>
                 <div className="flex flex-col space-y-20 mt-6">
                     <Title className='text-center'>Maquinarias hoy</Title>
-                    <ProgressCircleHero title="Tiempo maquinarias detenidas jornada de hoy" value={40}/>
-                    <ProgressCircleHero  title="Maquinarias fuera de servicio hoy " value={10}/>
+                    <ProgressCircleMdHero title="Tiempo maquinarias detenidas jornada de hoy" value={40}/>
+                    <ProgressCircleMdHero  title="Maquinarias fuera de servicio hoy " value={10}/>
                 </div>
               </Card>
 
-            </TabPanel>
-                
+            </TabPanel> 
             <TabPanel>
-              <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3">
-                
-              <Calendar setDateRange= {setSegurityDate}></Calendar>
 
+            <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-4">
+              
+                <CalendarDay setDate = {setSecurityDate}></CalendarDay>
+              
               </div>
-              <Card className="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div>
-                    <BarChart2Hero title="Metros cúbicos cargados diarios"  chartData= {chartData4}/>
-                </div>
-                <div className="flex flex-col space-y-20 mt-6">
-                    <Title className='text-center'>Maquinarias hoy</Title>
-                    <ProgressCircleHero title="Tiempo maquinarias detenidas jornada de hoy" value={40}/>
-                    <ProgressCircleHero  title="Maquinarias fuera de servicio hoy " value={10}/>
-                </div>
+              <Card className="mt-6 grid gap-6 sm:grid-cols-1 lg:grid-cols-2">
+                <ProgressCircleXdHero title="Porcentaje sin casco"></ProgressCircleXdHero>
+                <ProgressCircleXdHero title="Porcentaje sin casco"></ProgressCircleXdHero>
+                {/* 
+                    Aqui va grafico
+                    Puedes usarlo para comentar varias líneas de código.
+                */}
               </Card>
 
             </TabPanel>

@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
+import Image from 'next/image';  // Importa el componente Image de Next.js
 
 export default function Login() {
   const [username, setUsername] = useState('');
@@ -25,8 +26,10 @@ export default function Login() {
 
   return (
     <div className="flex flex-col justify-center items-center h-screen">
-      <h1 className="text-xl mb-6">Agregar Titulo</h1>
-      <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full">
+      <div className="absolute top-10 pt-10 w-full flex justify-center">  {/* Ajusta la imagen para que esté en la parte superior de la pantalla */}
+        <Image src="/avatar.png" alt="Avatar" width={400} height={400} />
+      </div>
+      <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full">  {/* Mantiene el formulario centrado */}
         <form onSubmit={handleLogin}>
           <div className="mb-4">
             <label htmlFor="usernameInput" className="block text-sm font-medium text-gray-700">Usuario</label>
