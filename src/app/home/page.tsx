@@ -26,6 +26,8 @@ export default function Dashboard() {
   const [chartData3, setChartData3] = useState<CamionOperadorData[]>([]);
   const [chartData4, setChartData4] = useState<CamionOperadorData[]>([]);
   const [chartDataRest, setChartDataRest] = useState<any[]>([]);
+  const [securityUser, setSecurityUser] = useState<any[]>([]);
+  const [securityUser2, setSecurityUser2] = useState<any[]>([]);
 
   const router = useRouter();
 
@@ -217,7 +219,47 @@ interface CamionOperadorData {
   }
 }, [machineDate]);
 
+  //seguridad con casco y sin casco
   
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+          const response = await fetch(`./rs/rs.json`);
+          
+          if (!response.ok) {
+              throw new Error(`Network response was not ok: ${response.status}`);
+          }
+
+          const jsonData = await response.json();  // Asegúrate de que jsonData es un array
+
+          // Verifica que securityDate sea una cadena no vacía
+          console.log('securityDate', securityDate)
+          console.log('jsonData', jsonData)
+          if (securityDate) {
+              const filteredData = jsonData.filter((item:any) => item.Fecha === securityDate);
+
+              if (filteredData.length > 0) {
+                  // Asumiendo que cada objeto tiene propiedades 'Operario 1' y 'Operario 2'
+                  const filtered = {
+                      operario1: filteredData[0]['Operario 1'],  // Accede a la propiedad usando corchetes si incluye espacios
+                      operario2: filteredData[0]['Operario 2']
+                  };
+                  console.log('filtered.operario1', filtered.operario1)
+                  console.log('filtered.operario2', filtered.operario2)
+                  setSecurityUser(filtered.operario1);
+                  setSecurityUser2(filtered.operario2);
+              }
+          }
+      } catch (error) {
+          console.error('Failed to fetch data:', error);
+      }
+    };
+
+    // Ejecutar fetchData solo si securityDate es una cadena no vacía
+    if (securityDate) {
+        fetchData();
+    }
+}, [securityDate]);  // Depende de securityDate
 
   
 
@@ -276,8 +318,8 @@ interface CamionOperadorData {
               
               </div>
               <Card className="mt-6 grid gap-6 sm:grid-cols-1 lg:grid-cols-2">
-                <ProgressCircleXdHero title="Porcentaje sin casco"></ProgressCircleXdHero>
-                <ProgressCircleXdHero title="Porcentaje sin casco"></ProgressCircleXdHero>
+                <ProgressCircleXdHero title="Porcentaje operario 1 con casco durante el dia" value = {securityUser}></ProgressCircleXdHero>
+                <ProgressCircleXdHero title="Porcentaje operario 2 con casco durante el dia" value = {securityUser2}></ProgressCircleXdHero>
                 {/* 
                     Aqui va grafico
                     Puedes usarlo para comentar varias líneas de código.
