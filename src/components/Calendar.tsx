@@ -31,7 +31,7 @@ export default function Calendar({ setDateRange }: any) {
     };
 
     return (
-        <div className="mt-6 grid gap-6">
+        <div className=" grid gap-6">
             <Title>Selecciona Rango de Fecha</Title>
             <DateRangePicker className='w-64' onValueChange={handleDateChange}></DateRangePicker>
         </div>

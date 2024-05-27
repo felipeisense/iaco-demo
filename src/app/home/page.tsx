@@ -11,6 +11,7 @@ import Calendar from '@/components/Calendar';
 import ProgressCircleMdHero from '@/components/ProgressCircleMd';
 import { CalendarDay } from '@/components/CalendarDay';
 import ProgressCircleXdHero from '@/components/ProgressCircleXl';
+import Image from 'next/image';
 
 
 
@@ -233,8 +234,7 @@ interface CamionOperadorData {
           const jsonData = await response.json();  // Asegúrate de que jsonData es un array
 
           // Verifica que securityDate sea una cadena no vacía
-          console.log('securityDate', securityDate)
-          console.log('jsonData', jsonData)
+          
           if (securityDate) {
               const filteredData = jsonData.filter((item:any) => item.Fecha === securityDate);
 
@@ -266,7 +266,12 @@ interface CamionOperadorData {
     <main className="relative min-h-screen min-w-full bg-blue-100 p-6 sm:p-10">
       <SideDrawer />
       <div className="ml-16">
-        <Title>DashBoard</Title>
+        <div className="flex justify-between items-center">
+          <Title>DashBoard</Title>
+          
+          </div>
+
+        
         <TabGroup>
           <TabList>
             <Tab>Operarios</Tab>
@@ -275,9 +280,10 @@ interface CamionOperadorData {
           </TabList>
           <TabPanels>
             <TabPanel>
-              <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-4">
+              <div className=" flex justify-between items-center">
               
                 <Calendar setDateRange = {setOperariosDate}></Calendar>
+                <Image src="/avatar.png" alt="Avatar" width={200} height={200} />
               
               </div>
               <Card className="mt-6 grid gap-6 sm:grid-cols-1 lg:grid-cols-2">
@@ -292,9 +298,10 @@ interface CamionOperadorData {
               </Card>
             </TabPanel>
             <TabPanel>
-              <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3">
+              <div className="flex justify-between items-center">
                 
               <Calendar setDateRange= {setMachineDate}></Calendar>
+              <Image src="/avatar.png" alt="Avatar" width={200} height={200} />
 
               </div>
               <Card className="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -311,11 +318,13 @@ interface CamionOperadorData {
             </TabPanel> 
             <TabPanel>
 
-            <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-4">
-              
+                <div className='flex justify-between items-center'>
                 <CalendarDay setDate = {setSecurityDate}></CalendarDay>
+                <Image src="/avatar.png" alt="Avatar" width={200} height={200} />
+                </div>
+                
               
-              </div>
+              
               <Card className="mt-6 grid gap-6 sm:grid-cols-1 lg:grid-cols-2">
                 <ProgressCircleXdHero title="Porcentaje operario 1 con casco durante el dia" value = {securityUser}></ProgressCircleXdHero>
                 <ProgressCircleXdHero title="Porcentaje operario 2 con casco durante el dia" value = {securityUser2}></ProgressCircleXdHero>
